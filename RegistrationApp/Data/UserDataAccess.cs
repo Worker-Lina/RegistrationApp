@@ -90,9 +90,33 @@ namespace RegistrationApp.Data
                 {
                     return true;
                 }
-                else
+            }
+
+            dataReader.Close();
+            command.Dispose();
+
+            return false;
+        }
+
+
+
+        public bool IsPasswordExist(string password)
+        {
+            var selectSqlScript = "select Password from Users";
+
+            var crypt = new CryptService();
+            password = crypt.GetHashString(password).ToString();
+            var command = factory.CreateCommand();
+            command.CommandText = selectSqlScript;
+            command.Connection = connection;
+
+            var dataReader = command.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                if (password == dataReader["Password"].ToString())
                 {
-                    return false;
+                    return true;
                 }
             }
 

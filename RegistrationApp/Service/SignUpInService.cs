@@ -56,9 +56,16 @@ namespace RegistrationApp.Service
                 User user = new User();
                 Console.WriteLine("Введите логин: ");
                 var login = Console.ReadLine();
-                if (userDataAccess.IsLoginExist(login))
+                if (userDataAccess.IsLoginExist(login) == true)
                 {
                     user.Login = login;
+                }
+
+                Console.WriteLine("Введите пароль: ");
+                var password = Console.ReadLine();
+                if (userDataAccess.IsPasswordExist(password) == true)
+                {
+                    Console.WriteLine("Welcome");
                 }
             }
             //TODO

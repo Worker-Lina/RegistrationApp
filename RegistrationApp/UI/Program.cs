@@ -10,6 +10,7 @@ namespace RegistrationApp.UI
         {
             InitConfiguration();
 
+
             var sing = new SignUpInService();
             var user = sing.Registration();
 
