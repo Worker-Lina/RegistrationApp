@@ -26,5 +26,6 @@ namespace RegistrationApp.Data
         }
 
         public abstract void Insert(T entity);
+
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using RegistrationApp.Data;
+using RegistrationApp.Service;
+using System;
 
 namespace RegistrationApp.UI
 {
@@ -6,7 +8,21 @@ namespace RegistrationApp.UI
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            InitConfiguration();
+
+            var sing = new SignUpInService();
+            var user = sing.Registration();
+
+            using (var userDataAccess = new UserDataAccess())
+            {
+                userDataAccess.Insert(user);
+            }
+
+        }
+
+        private static void InitConfiguration()
+        {
+            ConfigurationService.Init();
         }
     }
 }
