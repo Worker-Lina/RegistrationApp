@@ -1,0 +1,11 @@
+CREATE DATABASE UserDataBase
+
+create table Users
+(
+	Id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
+	[Login] NVARCHAR(MAX) NOT NULL,
+	[Password] Uniqueidentifier NOT NULL,
+	FullName NVARCHAR(MAX),
+	Email NVARCHAR(MAX),
+	PhotoURL NVARCHAR(MAX)
+)
